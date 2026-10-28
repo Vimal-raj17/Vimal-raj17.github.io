@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Vimalraj R — Java Developer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --paper: #F6F4EF;
+    --paper-raised: #EFECE4;
+    --ink: #201E1A;
+    --ink-soft: #6A6557;
+    --accent: #2F5233;
+    --accent-soft: #E3E9DF;
+    --line: #DEDAD2;
+    color-scheme: light;
+    box-sizing: border-box;
+    padding-top: env(safe-area-inset-top, 0px);
+    padding-bottom: env(safe-area-inset-bottom, 0px);
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --paper: #17191A;
+      --paper-raised: #1F2222;
+      --ink: #EDEAE2;
+      --ink-soft: #9B9688;
+      --accent: #7FAE84;
+      --accent-soft: #233026;
+      --line: #32352F;
+      color-scheme: dark;
+    }
+  }
+  :root[data-theme="dark"] {
+    --paper: #17191A; --paper-raised: #1F2222; --ink: #EDEAE2;
+    --ink-soft: #9B9688; --accent: #7FAE84; --accent-soft: #233026; --line: #32352F;
+    color-scheme: dark;
+  }
+  html { scroll-padding-top: env(safe-area-inset-top, 0px); }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; background: var(--paper); color: var(--ink);
+    font-family: "IBM Plex Sans", -apple-system, sans-serif;
+    font-size: 16px; line-height: 1.65;
+  }
+  a { color: inherit; }
+  .serif { font-family: "Newsreader", Georgia, serif; }
+
+  .layout { display: flex; flex-direction: column; min-height: 100%; }
+
+  .identity {
+    padding: 44px 24px 28px;
+    border-bottom: 1px solid var(--line);
+  }
+  .identity h1.serif {
+    font-size: 2rem; font-weight: 500; margin: 0 0 6px; line-height: 1.15;
+  }
+  .identity .role { color: var(--accent); font-weight: 600; font-size: 0.95rem; margin-bottom: 16px; }
+  .identity .statement { color: var(--ink-soft); max-width: 46ch; font-size: 0.95rem; margin-bottom: 22px; }
+  .identity .meta-list { font-size: 0.88rem; }
+  .identity .meta-list div { margin-bottom: 7px; }
+  .identity .meta-list a { text-decoration: none; border-bottom: 1px solid var(--line); padding-bottom: 1px; }
+  .identity .meta-list a:hover { border-color: var(--accent); color: var(--accent); }
+
+  main { padding: 8px 24px 80px; max-width: 640px; }
+
+  section { margin-top: 48px; }
+  section > h2.serif {
+    font-size: 1.1rem; font-weight: 500; margin: 0 0 20px;
+    padding-bottom: 10px; border-bottom: 1px solid var(--line);
+  }
+
+  .skill-group { margin-bottom: 12px; font-size: 0.93rem; }
+  .skill-group .label { color: var(--ink-soft); display: inline; }
+  .skill-group .items { font-weight: 500; }
+
+  .timeline { position: relative; padding-left: 22px; }
+  .timeline::before {
+    content: ""; position: absolute; left: 0; top: 6px; bottom: 6px;
+    width: 1px; background: var(--line);
+  }
+  .tl-entry { position: relative; margin-bottom: 30px; }
+  .tl-entry::before {
+    content: ""; position: absolute; left: -26px; top: 6px;
+    width: 8px; height: 8px; border-radius: 50%; background: var(--accent);
+  }
+  .tl-entry .date { font-size: 0.8rem; color: var(--ink-soft); margin-bottom: 4px; }
+  .tl-entry h3 { margin: 0 0 2px; font-size: 1rem; font-weight: 600; }
+  .tl-entry .sub { font-size: 0.87rem; color: var(--ink-soft); margin-bottom: 10px; }
+  .tl-entry ul { margin: 8px 0 0; padding-left: 18px; }
+  .tl-entry li { margin-bottom: 6px; font-size: 0.92rem; }
+
+  .project { padding: 18px 0; border-top: 1px solid var(--line); }
+  .project:last-child { padding-bottom: 0; }
+  .project h3 { margin: 0 0 8px; font-size: 1rem; font-weight: 600; }
+  .project p { margin: 0 0 10px; font-size: 0.92rem; color: var(--ink-soft); }
+  .project .tech { font-size: 0.82rem; }
+  .project .tech b { color: var(--ink); font-weight: 600; }
+  .project .link { display: inline-block; margin-top: 8px; font-size: 0.85rem; color: var(--accent); text-decoration: none; border-bottom: 1px solid currentColor; }
+
+  .edu-entry { margin-bottom: 18px; }
+  .edu-entry h3 { margin: 0 0 2px; font-size: 0.97rem; font-weight: 600; }
+  .edu-entry .sub { font-size: 0.87rem; color: var(--ink-soft); }
+
+  .cert-entry { padding: 11px 0; border-top: 1px solid var(--line); font-size: 0.92rem; }
+
+  footer { padding: 30px 24px 60px; color: var(--ink-soft); font-size: 0.8rem; max-width: 640px; }
+
+  @media (min-width: 820px) {
+    .layout { flex-direction: row; align-items: flex-start; }
+    .identity {
+      width: 280px; flex-shrink: 0; position: sticky; top: 0;
+      height: 100vh; border-bottom: none; border-right: 1px solid var(--line);
+      display: flex; flex-direction: column; justify-content: center;
+      padding: 0 36px;
+    }
+    main { padding: 70px 48px 100px; flex: 1; }
+    footer { margin-left: 280px; padding: 30px 48px 60px; }
+  }
+</style>
+
+<style>
+/* 3D recruiter-focused visualization */
+.viz-hero{margin:0 0 56px;padding:28px 0 34px;border-bottom:1px solid var(--line)}
+.viz-head{display:flex;justify-content:space-between;gap:20px;align-items:flex-end;margin-bottom:20px}
+.viz-kicker{font-size:.78rem;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);font-weight:600}
+.viz-head h2{margin:5px 0 0;font-size:1.7rem;font-weight:500}
+.viz-stage{position:relative;height:380px;border:1px solid var(--line);background:linear-gradient(135deg,var(--paper-raised),var(--paper));overflow:hidden;perspective:900px}
+.viz-stage:before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 50% 45%,rgba(47,82,51,.12),transparent 48%)}
+.viz-orbit{position:absolute;inset:50% auto auto 50%;width:250px;height:250px;transform:translate(-50%,-50%) rotateX(62deg) rotateZ(-8deg);transform-style:preserve-3d;border:1px solid color-mix(in srgb,var(--accent) 30%,transparent);border-radius:50%;animation:spin 18s linear infinite}
+.viz-orbit.two{width:330px;height:330px;transform:translate(-50%,-50%) rotateX(62deg) rotateZ(48deg);animation-duration:24s;animation-direction:reverse}
+.viz-core{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%) translateZ(70px);width:118px;height:118px;border-radius:24px;background:var(--accent);color:#fff;display:grid;place-items:center;text-align:center;font-weight:600;box-shadow:0 20px 45px rgba(0,0,0,.18);animation:float 3.8s ease-in-out infinite}
+.viz-core small{display:block;font-weight:400;font-size:.7rem;opacity:.85}
+.viz-node{position:absolute;left:50%;top:50%;padding:8px 11px;border:1px solid var(--line);background:var(--paper);border-radius:999px;font-size:.72rem;font-weight:600;white-space:nowrap;box-shadow:0 8px 20px rgba(0,0,0,.08);transform-style:preserve-3d;animation:float 4s ease-in-out infinite}
+.n1{transform:translate(-50%,-50%) translate3d(-150px,-35px,40px)}.n2{transform:translate(-50%,-50%) translate3d(150px,-55px,35px)}.n3{transform:translate(-50%,-50%) translate3d(-145px,70px,25px)}.n4{transform:translate(-50%,-50%) translate3d(145px,75px,30px)}.n5{transform:translate(-50%,-50%) translate3d(0,-150px,20px)}.n6{transform:translate(-50%,-50%) translate3d(0,145px,15px)}
+.viz-legend{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}.viz-legend span{font-size:.75rem;color:var(--ink-soft);padding:5px 9px;border:1px solid var(--line);border-radius:999px}
+.viz-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:14px}.viz-stat{padding:13px;border-top:2px solid var(--accent);background:var(--paper-raised)}.viz-stat b{font-size:1.2rem;display:block}.viz-stat span{font-size:.72rem;color:var(--ink-soft)}
+@keyframes spin{to{transform:translate(-50%,-50%) rotateX(62deg) rotateZ(352deg)}}
+@keyframes float{0%,100%{margin-top:0}50%{margin-top:-7px}}
+@media(max-width:600px){.viz-stage{height:330px}.n1{transform:translate(-50%,-50%) translate3d(-105px,-30px,30px)}.n2{transform:translate(-50%,-50%) translate3d(105px,-40px,30px)}.n3{transform:translate(-50%,-50%) translate3d(-100px,60px,20px)}.n4{transform:translate(-50%,-50%) translate3d(100px,65px,20px)}.n5{transform:translate(-50%,-50%) translate3d(0,-120px,15px)}.n6{transform:translate(-50%,-50%) translate3d(0,115px,10px)}.viz-stats{grid-template-columns:1fr}}
+@media(prefers-reduced-motion:reduce){.viz-orbit,.viz-core,.viz-node{animation:none}}
+</style>
+</head>
+<body>
+<div class="layout">
+
+  <aside class="identity">
+    <h1 class="serif">Vimalraj R</h1>
+    <div class="role">Java Developer</div>
+    <p class="statement">Backend development grounded in Java — Spring Boot, relational data design, and REST APIs, with a foundation in data structures and object-oriented programming.</p>
+    <div class="meta-list">
+      <div><a href="mailto:vimalraj.r1718@gmail.com">vimalraj.r1718@gmail.com</a></div>
+      <div><a href="tel:+917904279753">+91 7904279753</a></div>
+      <div><a href="https://github.com/Vimal-raj17" target="_blank" rel="noopener">github.com/Vimal-raj17</a></div>
+      <div><a href="https://linkedin.com/in/vimal-raj-r-9770b3292" target="_blank" rel="noopener">LinkedIn</a></div>
+      <div style="color: var(--ink-soft);">Salem, Tamil Nadu</div>
+    </div>
+  </aside>
+
+  <main>
+    <section class="viz-hero">
+      <div class="viz-head"><div><div class="viz-kicker">Interactive backend map</div><h2 class="serif">Java Backend in 3D</h2></div><div style="font-size:.78rem;color:var(--ink-soft);max-width:28ch;text-align:right">A visual snapshot of the technologies behind my projects.</div></div>
+      <div class="viz-stage" aria-label="Interactive 3D-style visualization of Java backend skills">
+        <div class="viz-orbit"></div><div class="viz-orbit two"></div>
+        <div class="viz-core">JAVA 8<small>Backend Core</small></div>
+        <div class="viz-node n1">Spring Boot</div><div class="viz-node n2">REST APIs</div><div class="viz-node n3">JPA / Hibernate</div><div class="viz-node n4">MySQL / SQL</div><div class="viz-node n5">Maven</div><div class="viz-node n6">Git / GitHub</div>
+      </div>
+      <div class="viz-legend"><span>API Development</span><span>Database</span><span>ORM</span><span>Version Control</span><span>Bug Fixing</span></div>
+      <div class="viz-stats"><div class="viz-stat"><b>4</b><span>Core project areas</span></div><div class="viz-stat"><b>2</b><span>Java backend projects</span></div><div class="viz-stat"><b>1</b><span>Primary role focus</span></div></div>
+    </section>
+    <section>
+      <h2 class="serif">Skills</h2>
+      <div class="skill-group"><span class="label">Core — </span><span class="items">Core Java, OOP, Data Structures &amp; Algorithms</span></div>
+      <div class="skill-group"><span class="label">Backend — </span><span class="items">Spring Boot, Spring Data JPA, Hibernate, REST API</span></div>
+      <div class="skill-group"><span class="label">Data — </span><span class="items">MySQL, SQL</span></div>
+      <div class="skill-group"><span class="label">Tooling — </span><span class="items">Git, GitHub, Maven</span></div>
+      <div class="skill-group"><span class="label">Web — </span><span class="items">HTML, CSS, JavaScript</span></div>
+    </section>
+
+    <section>
+      <h2 class="serif">Experience</h2>
+      <div class="timeline">
+        <div class="tl-entry">
+          <div class="date">Oct 2025 – Jan 2026</div>
+          <h3>Java Developer Intern</h3>
+          <div class="sub">Rasi Infotech, Salem</div>
+          <p style="font-size: 0.92rem; color: var(--ink-soft); margin: 0 0 8px;">Contributed to EN-Project (PMS), a project management application used to track employee details, projects, bugs, and timesheets.</p>
+          <ul>
+            <li>Developed REST APIs and handled CRUD operations within Spring Boot applications, following the Spring MVC architecture pattern.</li>
+            <li>Worked on entity relationship mapping (One-to-Many, Many-to-One) using Spring Data JPA and Hibernate.</li>
+            <li>Analyzed exception logs to identify and fix bugs, collaborating with the testing team to understand workflows.</li>
+            <li>Wrote JPA queries and native SQL queries for efficient database access; used Git for version control.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2 class="serif">Projects</h2>
+
+      <div class="project">
+        <h3>LibTrack — Library Management System</h3>
+        <p>A Java and MySQL-based application for managing library operations: book cataloging, member records, and loan tracking. Designed the relational database schema and architecture, built entities, services, and repository components for CRUD operations, and modeled tier-based membership policies governing loan limits, due dates, and fine calculation.</p>
+        <div class="tech"><b>Tools:</b> Git, GitHub, MySQL Workbench &nbsp;&nbsp;<b>Tech:</b> Java, Spring Boot, Spring Data JPA, Hibernate</div>
+      </div>
+        <a class="link" href="https://github.com/Vimal-raj17/</a>
+      </div>
+
+      <div class="project">
+        <h3>IoT-Based Gesture Controlled Contactless Switch</h3>
+        <p>A gesture-controlled switch system with real-time sensor-based hand-gesture detection, built to eliminate physical touchpoints in high-contact environments such as hospitals and kitchens.</p>
+      </div>
+    </section>
+
+    <section>
+      <h2 class="serif">Education</h2>
+      <div class="edu-entry">
+        <h3>B.Sc. Computer Science with Data Analytics</h3>
+        <div class="sub">Kongu Arts and Science College, Erode, Tamil Nadu — 2022 – 2025 — CGPA 6.49 / 10</div>
+      </div>
+      <div class="edu-entry">
+        <h3>Higher Secondary Education</h3>
+        <div class="sub">Ramakrishna Sarada Higher Secondary School, Salem — 2021 – 2022 — 61%</div>
+      </div>
+    </section>
+
+    <section>
+      <h2 class="serif">Certifications</h2>
+      <div class="cert-entry">Java Programming Course for Beginners — ScholarHat (June 2026)</div>
+      <div class="cert-entry">Upgrading to Java 8 Tutorials — Infosys Springboard (June 2026)</div>
+      <div class="cert-entry">Software Engineering Virtual Experience — JPMorgan Chase &amp; Co.</div>
+      <div class="cert-entry">GenAI Powered Data Analytics Virtual Experience — Tata Group</div>
+    </section>
+  </main>
+</div>
+<footer>© 2026 Vimalraj R</footer>
+</body>
+</html>
